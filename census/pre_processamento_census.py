@@ -28,3 +28,12 @@ previsores[:, 13] = labelEncoder_previsores.fit_transform(previsores[:, 13])
 from sklearn.compose import ColumnTransformer
 oneHotEncoder = ColumnTransformer(transformers=[('OneHot', OneHotEncoder(), [1,3,5,6,7,8,9,13])], remainder='passthrough')
 previsores = oneHotEncoder.fit_transform(previsores).toarray()
+
+labelEncoder_classes = LabelEncoder()
+classes = labelEncoder_classes.fit_transform(classes)
+
+#ESCALONAMENTO
+
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+previsores = scaler.fit_transform(previsores)
